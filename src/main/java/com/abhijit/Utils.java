@@ -1,12 +1,12 @@
 package com.abhijit;
 
-public class Utils {
+class Utils {
 
-    public static void println(Object o) {
+    static void println(Object o) {
         System.out.println(o);
     }
 
-    public static void swap(int[] arr, int i, int j) {
+    static void swap(int[] arr, int i, int j) {
         if(i == j) {
             return;
         }

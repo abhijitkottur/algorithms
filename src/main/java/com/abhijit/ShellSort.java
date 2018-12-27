@@ -24,15 +24,13 @@ public class ShellSort {
 
         int gap = length / 2;
         while (gap > 0) {
-            int firstUnsortedIndex = gap;
-            while (firstUnsortedIndex < length) {
-                int newUnsortedElement = arr[firstUnsortedIndex];
-                int i;
-                for (i = firstUnsortedIndex; i > 0 && newUnsortedElement < arr[i-gap]; i -= gap) {
-                    arr[i] = arr[i-gap];
+            for (int i = gap; i < length; i++) {
+                int newUnsortedElement = arr[i];
+                int j;
+                for (j = i; j >= gap && newUnsortedElement < arr[j-gap]; j -= gap) {
+                    arr[j] = arr[j-gap];
                 }
-                arr[i] = newUnsortedElement;
-                firstUnsortedIndex++;
+                arr[j] = newUnsortedElement;
             }
             gap /= 2;
         }

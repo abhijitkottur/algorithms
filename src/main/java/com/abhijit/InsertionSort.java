@@ -26,10 +26,10 @@ public class InsertionSort {
         while (firstUnsortedIndex < length) {
             int newUnsortedElement = arr[firstUnsortedIndex];
             int i;
-            for (i = firstUnsortedIndex - 1; i >= 0 && newUnsortedElement < arr[i]; i--) {
-                arr[i+1] = arr[i];
+            for (i = firstUnsortedIndex; i > 0 && newUnsortedElement < arr[i-1]; i--) {
+                arr[i] = arr[i-1];
             }
-            arr[i+1] = newUnsortedElement;
+            arr[i] = newUnsortedElement;
             firstUnsortedIndex++;
         }
         return arr;

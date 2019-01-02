@@ -1,5 +1,7 @@
 package com.abhijit;
 
+import java.util.Random;
+
 class Utils {
 
     static int[] buildNewIntArray() {
@@ -12,6 +14,10 @@ class Utils {
         arr[5] = 1;
         arr[6] = -22;
         return arr;
+    }
+
+    static int[] buildNewIntArrayByRange(int size, int min, int max) {
+        return new Random().ints(size, min, max + 1).toArray();
     }
 
     static void println(Object o) {

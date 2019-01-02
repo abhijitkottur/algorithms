@@ -41,5 +41,14 @@ public class CountingSort {
                 sortedIndex += j;
             }
         }
+
+        // Other way of doing it
+//        int j = 0;
+//        for (int i = min; i <= max; i++) {
+//            while (countingArr[i - min] > 0) {
+//                arr[j++] = i;
+//                countingArr[i - min]--;
+//            }
+//        }
     }
 }

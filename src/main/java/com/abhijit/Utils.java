@@ -2,9 +2,9 @@ package com.abhijit;
 
 import java.util.Random;
 
-class Utils {
+public class Utils {
 
-    static int[] buildNewIntArray() {
+    public static int[] buildNewIntArray() {
         int[] arr = new int[7];
         arr[0] = 20;
         arr[1] = 35;
@@ -16,15 +16,15 @@ class Utils {
         return arr;
     }
 
-    static int[] buildNewIntArrayByRange(int size, int min, int max) {
+    public static int[] buildNewIntArrayByRange(int size, int min, int max) {
         return new Random().ints(size, min, max + 1).toArray();
     }
 
-    static void println(Object o) {
+    public static void println(Object o) {
         System.out.println(o);
     }
 
-    static void swap(int[] arr, int i, int j) {
+    public static void swap(int[] arr, int i, int j) {
         if(i == j) {
             return;
         }

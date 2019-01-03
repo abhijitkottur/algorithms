@@ -1,4 +1,4 @@
-package com.abhijit;
+package com.abhijit.sort;
 
 import java.util.stream.IntStream;
 

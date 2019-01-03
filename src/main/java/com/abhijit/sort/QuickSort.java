@@ -1,5 +1,7 @@
 package com.abhijit.sort;
 
+import com.abhijit.Utils;
+
 import java.util.stream.IntStream;
 
 public class QuickSort {

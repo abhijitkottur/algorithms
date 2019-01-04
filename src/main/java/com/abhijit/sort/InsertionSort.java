@@ -24,16 +24,36 @@ public class InsertionSort {
             return arr;
         }
 
-        int firstUnsortedIndex = 1;
-        while (firstUnsortedIndex < length) {
+        for (int firstUnsortedIndex = 1; firstUnsortedIndex < length; firstUnsortedIndex++) {
             int newUnsortedElement = arr[firstUnsortedIndex];
             int i;
             for (i = firstUnsortedIndex; i > 0 && newUnsortedElement < arr[i-1]; i--) {
                 arr[i] = arr[i-1];
             }
             arr[i] = newUnsortedElement;
-            firstUnsortedIndex++;
         }
         return arr;
+    }
+
+    private static int[] insertionSortRecursive(int[] arr) {
+        int length = arr.length;
+        if (length <= 1) {
+            return arr;
+        }
+
+        for (int firstUnsortedIndex = 1; firstUnsortedIndex < length; firstUnsortedIndex++) {
+            int newUnsortedElement = arr[firstUnsortedIndex];
+            int insertionPosition = shift(arr, firstUnsortedIndex, newUnsortedElement);
+            arr[insertionPosition] = newUnsortedElement;
+        }
+        return arr;
+    }
+
+    private static int shift(int[] arr, int i, int newUnsortedElement) {
+        if (i > 0 && newUnsortedElement < arr[i-1]) {
+            arr[i] = arr[i-1];
+            return shift(arr, --i, newUnsortedElement);
+        }
+        return i;
     }
 }

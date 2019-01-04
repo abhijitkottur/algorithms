@@ -31,7 +31,8 @@ public class MergeSort {
 
         recursiveMergeSort(arr, start, mid);
         recursiveMergeSort(arr, mid, end);
-        merge(arr, start, mid, end);
+//        merge(arr, start, mid, end);
+        mergeDesc(arr, start, mid, end);
     }
 
     private static void merge(int[] arr, int start, int mid, int end) {
@@ -43,7 +44,7 @@ public class MergeSort {
 
         int i = start, j = mid, tempIndex = 0;
         while (i < mid && j < end) {
-            tempArr[tempIndex++] = arr[i] <= arr[j] ? arr[i++] : arr[j++]; // The '=' implies stable sorting
+            tempArr[tempIndex++] = arr[i] <= arr[j] ? arr[i++] : arr[j++]; // The '<=' implies stable sorting
         }
 
         // Copy left over elements from left array, if any, to the end of the input array.
@@ -53,6 +54,28 @@ public class MergeSort {
 
         // Copy the sorted elements for the tempArr to the input array
         System.arraycopy(tempArr, 0, arr, start, tempIndex);
+    }
+
+    private static void mergeDesc(int[] arr, int start, int mid, int end) {
+        if (arr[mid-1] >= arr[mid]) {
+            return;
+        }
+
+        int length = end - start;
+        int[] tempArr = new int[length];
+
+        int i = mid - 1, j = end - 1, tempIndex = length;
+        while (i >= start && j >= mid) {
+            tempArr[--tempIndex] = arr[i] < arr[j] ? arr[i--] : arr[j--]; // The '<' implies stable sorting
+        }
+
+        // Copy left over elements from right array, if any, to the start of the input array.
+        // We don't care about the left over elements from the left array, if any, as the
+        // elements are already in correct position
+        System.arraycopy(arr, mid, arr, start, (j + 1) - mid);
+
+        // Copy the sorted elements for the tempArr to the input array
+        System.arraycopy(tempArr, tempIndex, arr, start + tempIndex, length - tempIndex);
     }
 
 }

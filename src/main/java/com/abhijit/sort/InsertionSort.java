@@ -13,44 +13,51 @@ public class InsertionSort {
         Utils.println("Before sort");
         IntStream.range(0, length).forEach(i -> Utils.println(arr[i]));
 
-        int[] sortedArr = insertionSort(arr);
+//        insertionSort(arr);
+        insertionSortWithRecursion(arr);
         Utils.println("After sort");
-        IntStream.range(0, length).forEach(i -> Utils.println(sortedArr[i]));
+        IntStream.range(0, length).forEach(i -> Utils.println(arr[i]));
     }
 
-    private static int[] insertionSort(int[] arr) {
+    private static void insertionSort(int[] arr) {
         int length = arr.length;
         if (length <= 1) {
-            return arr;
+            return;
         }
 
         for (int firstUnsortedIndex = 1; firstUnsortedIndex < length; firstUnsortedIndex++) {
             int newUnsortedElement = arr[firstUnsortedIndex];
             int i;
-            for (i = firstUnsortedIndex; i > 0 && newUnsortedElement < arr[i-1]; i--) {
+            for (i = firstUnsortedIndex; i > 0 && arr[i-1] > newUnsortedElement; i--) {
                 arr[i] = arr[i-1];
             }
             arr[i] = newUnsortedElement;
         }
-        return arr;
     }
 
-    private static int[] insertionSortRecursive(int[] arr) {
+    private static void insertionSortWithRecursion(int[] arr) {
         int length = arr.length;
         if (length <= 1) {
-            return arr;
+            return;
         }
 
-        for (int firstUnsortedIndex = 1; firstUnsortedIndex < length; firstUnsortedIndex++) {
-            int newUnsortedElement = arr[firstUnsortedIndex];
-            int insertionPosition = shift(arr, firstUnsortedIndex, newUnsortedElement);
-            arr[insertionPosition] = newUnsortedElement;
+        insertionSortRecursive(arr, arr.length - 1);
+    }
+
+    private static void insertionSortRecursive(int[] arr, int firstUnsortedIndex) {
+        if (firstUnsortedIndex == 0) {
+            return;
         }
-        return arr;
+
+        insertionSortRecursive(arr, firstUnsortedIndex - 1);
+
+        int newUnsortedElement = arr[firstUnsortedIndex];
+        int insertionPosition = shift(arr, firstUnsortedIndex, newUnsortedElement);
+        arr[insertionPosition] = newUnsortedElement;
     }
 
     private static int shift(int[] arr, int i, int newUnsortedElement) {
-        if (i > 0 && newUnsortedElement < arr[i-1]) {
+        if (i > 0 && arr[i-1] > newUnsortedElement) {
             arr[i] = arr[i-1];
             return shift(arr, --i, newUnsortedElement);
         }

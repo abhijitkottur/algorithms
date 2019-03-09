@@ -40,15 +40,22 @@ public class LinkedListTest {
 
         list.addToFront(janeJones);
         list.addToFront(johnDoe);
-        list.addToFront(marySmith);
-        list.addToFront(mikeWilson);
 
         System.out.println(list.getSize());
         list.print();
 
-        Employee removed = list.removeFromFront();
-        System.out.println(removed);
-
+        Employee removed1 = list.removeFromFront();
+        System.out.println("removed -> " + removed1);
+        System.out.println(list.getSize());
+        list.print();
+        
+        list.addToBack(marySmith);
+        list.addToBack(mikeWilson);
+        System.out.println(list.getSize());
+        list.print();
+        
+        Employee removed2 = list.removeFromBack();
+        System.out.println("removed -> " + removed2);
         System.out.println(list.getSize());
         list.print();
     }

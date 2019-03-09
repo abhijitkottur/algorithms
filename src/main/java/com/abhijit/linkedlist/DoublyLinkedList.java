@@ -60,18 +60,41 @@ public class DoublyLinkedList<T> {
 			head = tail = null;
 		} else {
 			head.getNext().setPrevious(null);
+
 			head = head.getNext();
 		}
 		size--;
+		node.setNext(null);
 		return node.getT();
 	}
 	
 	public void addToBack(T t) {
-		
+		DoublyNode<T> node = new DoublyNode<T>(t);
+		if (isEmpty()) {
+			head = tail = node;
+		} else {
+			node.setPrevious(tail);
+			tail.setNext(node);
+			tail = node;
+		}
+		size++;
 	}
 	
 	public T removeFromBack() {
-		return null;
+		if (isEmpty()) {
+			return null;
+		}
+		DoublyNode<T> node = head;
+		if (head == tail) {
+			head = tail = null;
+		} else {
+			tail.getPrevious().setNext(null);
+
+			tail = tail.getNext();
+		}
+		size--;
+		node.setPrevious(null);
+		return node.getT();
 	}
 	
 	public int getSize() {

@@ -42,12 +42,12 @@ public class DoublyLinkedList<T> {
 	public void addToFront(T t) {
 		DoublyNode<T> node = new DoublyNode<T>(t);
 		if (isEmpty()) {
-			head = tail = node;
+			tail = node;
 		} else {
 			node.setNext(head);
 			head.setPrevious(node);
-			head = node;
 		}
+		head = node;
 		size++;
 	}
 	
@@ -61,21 +61,21 @@ public class DoublyLinkedList<T> {
 		} else {
 			head.getNext().setPrevious(null);
 			head = head.getNext();
+			node.setNext(null);
 		}
 		size--;
-		node.setNext(null);
 		return node.getT();
 	}
 	
 	public void addToBack(T t) {
 		DoublyNode<T> node = new DoublyNode<T>(t);
 		if (isEmpty()) {
-			head = tail = node;
+			head = node;
 		} else {
 			node.setPrevious(tail);
 			tail.setNext(node);
-			tail = node;
 		}
+		tail = node;
 		size++;
 	}
 	
@@ -83,15 +83,15 @@ public class DoublyLinkedList<T> {
 		if (isEmpty()) {
 			return null;
 		}
-		DoublyNode<T> node = head;
+		DoublyNode<T> node = tail;
 		if (head == tail) {
 			head = tail = null;
 		} else {
 			tail.getPrevious().setNext(null);
 			tail = tail.getNext();
+			node.setPrevious(null);
 		}
 		size--;
-		node.setPrevious(null);
 		return node.getT();
 	}
 	

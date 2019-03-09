@@ -1,10 +1,10 @@
 package com.abhijit.linkedlist;
 
-class Node<T> {
+class SinglyNode<T> {
     private T t;
-    private Node<T> next;
+    private SinglyNode<T> next;
 
-    public Node(T t) {
+    public SinglyNode(T t) {
         this.t = t;
     }
 
@@ -14,10 +14,10 @@ class Node<T> {
     public void setT(T t) {
         this.t = t;
     }
-    public Node<T> getNext() {
+    public SinglyNode<T> getNext() {
         return next;
     }
-    public void setNext(Node<T> next) {
+    public void setNext(SinglyNode<T> next) {
         this.next = next;
     }
 
@@ -28,12 +28,12 @@ class Node<T> {
 }
 
 public class SinglyLinkedList<T> {
-    private Node<T> head;
+    private SinglyNode<T> head;
 
     private int size;
 
     public void addToFront(T t) {
-        Node<T> node = new Node<>(t);
+    	SinglyNode<T> node = new SinglyNode<>(t);
         node.setNext(head);
         head = node;
         size++;
@@ -44,7 +44,7 @@ public class SinglyLinkedList<T> {
             return null;
         }
 
-        Node<T> removedNode = head;
+        SinglyNode<T> removedNode = head;
         head = head.getNext();
         removedNode.setNext(null);
         size--;
@@ -52,7 +52,7 @@ public class SinglyLinkedList<T> {
     }
 
     public void print() {
-        Node<T> current = head;
+    	SinglyNode<T> current = head;
         System.out.print("Head -> ");
         while (current != null) {
             System.out.print(current.getT());

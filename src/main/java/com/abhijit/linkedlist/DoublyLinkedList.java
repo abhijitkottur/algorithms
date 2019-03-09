@@ -60,7 +60,6 @@ public class DoublyLinkedList<T> {
 			head = tail = null;
 		} else {
 			head.getNext().setPrevious(null);
-
 			head = head.getNext();
 		}
 		size--;
@@ -89,7 +88,6 @@ public class DoublyLinkedList<T> {
 			head = tail = null;
 		} else {
 			tail.getPrevious().setNext(null);
-
 			tail = tail.getNext();
 		}
 		size--;
